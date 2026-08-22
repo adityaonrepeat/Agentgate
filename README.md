@@ -15,9 +15,13 @@ NamoID product, security recommendation, or endorsement.
 
 ## NamoID integration
 
-Describe exactly how this project uses NamoID: application/client type,
-Hosted Auth or protocol surface, issuer/environment configuration, callback
-path, and the user journey demonstrated. Do not commit credentials or tokens.
+This project must use **NamoID Hosted Auth as the application's sign-in
+system**. Hosted Auth is the application's authentication system, not a
+social-login button.
+
+Describe the application/client type, issuer/environment configuration,
+callback path, application session, and complete user journey. Do not commit
+credentials, authorization codes, or tokens.
 
 ## Community project metadata
 
@@ -30,19 +34,22 @@ path, and the user journey demonstrated. Do not commit credentials or tokens.
 
 ## Start here
 
-First, [create a NamoID account or sign in](https://namoid.in) so you can
-configure the NamoID integration required by the challenge.
-
-After creating a repository with **Use this template**, run:
+1. Create your repository using **[Use this template](https://github.com/namoidhq/namoid-challenge-template/generate)**.
+2. In the new repository, run:
 
 ```bash
-npm run setup -- --challenge=hosted-auth-starter --name="Your Name" --title="Your Project" --repo=https://github.com/you/project
+npm run setup -- --challenge=[challenge-id] --name="Your Name" --title="Your Project" --repo=https://github.com/you/project
 npm run check
 ```
 
-Replace `hosted-auth-starter` with the challenge you selected. Setup removes
+Replace `[challenge-id]` with the ID shown in the selected problem statement.
+Setup removes
 the remaining template placeholders and records machine-readable attribution in
 [`namoid-challenge.json`](./namoid-challenge.json).
+
+3. [Create an application in the NamoID Console](https://console.namoid.in/login).
+4. Configure its callback URL and integrate NamoID Hosted Auth into your POC.
+5. Build, test, deploy, and submit the pinned commit.
 
 ## Run locally
 
