@@ -1,14 +1,39 @@
 {
-  "name": "namoid-challenge-submission",
-  "version": "0.0.0",
+  "name": "agentgate",
+  "version": "0.1.0",
   "private": true,
   "type": "module",
   "scripts": {
     "setup": "node scripts/setup.mjs",
     "check": "node scripts/validate.mjs",
-    "dev": "python3 -m http.server 8080"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "vitest run",
+    "db:push": "tsx scripts/db-push.ts",
+    "seed": "tsx scripts/seed.ts",
+    "format": "prettier --write \"app/**/*.{ts,tsx,css}\" \"lib/**/*.ts\" \"tests/**/*.ts\" \"scripts/**/*.{ts,mjs}\" \"*.{json,css,html}\" \"README.md\" \"DECISIONS.md\" \"NOTICE.md\" \".github/**/*.yml\"",
+    "format:check": "prettier --check \"app/**/*.{ts,tsx,css}\" \"lib/**/*.ts\" \"tests/**/*.ts\" \"scripts/**/*.{ts,mjs}\" \"*.{json,css,html}\" \"README.md\" \"DECISIONS.md\" \"NOTICE.md\" \".github/**/*.yml\""
   },
   "engines": {
-    "node": ">=24"
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.15.15",
+    "@namoidhq/js": "^3.2.0",
+    "@namoidhq/nextjs": "^4.0.0",
+    "next": "^15.5.2",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "zod": "^3.24.2"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.3",
+    "@types/react": "^19.1.2",
+    "@types/react-dom": "^19.1.2",
+    "prettier": "^3.9.6",
+    "tsx": "^4.19.3",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.2"
   }
 }

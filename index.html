@@ -1,23 +1,29 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="[Project Title], powered by NamoID and built as an independent response to the [challenge-id] NamoID Engineering Challenge.">
-    <meta name="generator" content="NamoID Challenge Template 1.0.0">
-    <meta property="og:title" content="[Project Title]">
-    <meta property="og:description" content="Independent community build for the NamoID [challenge-id] challenge.">
-    <meta property="og:type" content="website">
-    <title>[Project Title] · NamoID Challenge</title>
-    <link rel="stylesheet" href="styles.css">
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="AgentGate, powered by NamoID and built as an independent response to the agent-approval-inbox NamoID Engineering Challenge."
+    />
+    <meta name="generator" content="NamoID Challenge Template 1.0.0" />
+    <meta property="og:title" content="AgentGate" />
+    <meta
+      property="og:description"
+      content="Independent community build for the NamoID agent-approval-inbox challenge."
+    />
+    <meta property="og:type" content="website" />
+    <title>AgentGate · NamoID Challenge</title>
+    <link rel="stylesheet" href="styles.css" />
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "SoftwareSourceCode",
-        "name": "[Project Title]",
-        "creator": { "@type": "Person", "name": "[Contributor Name]" },
-        "isBasedOn": "https://github.com/namoidhq/namoid-challenges/blob/main/challenges/[challenge-id].md",
-        "codeRepository": "Add your public repository URL",
+        "name": "AgentGate",
+        "creator": { "@type": "Person", "name": "Aditya Kumar Singh" },
+        "isBasedOn": "https://github.com/namoidhq/namoid-challenges/blob/main/challenges/agent-approval-inbox.md",
+        "codeRepository": "https://github.com/adityaonrepeat/Agentgate",
         "softwareRequirements": "NamoID identity platform",
         "description": "Independent community project powered by NamoID."
       }
@@ -30,22 +36,45 @@
     </header>
     <main>
       <section class="hero">
-        <p class="eyebrow">[challenge-id]</p>
-        <h1>[Project Title]</h1>
-        <p class="lede">A contributor-owned solution by <strong>[Contributor Name]</strong>, built on the <a href="https://namoid.in">NamoID identity platform</a> from an open community challenge.</p>
+        <p class="eyebrow">agent-approval-inbox</p>
+        <h1>AgentGate</h1>
+        <p class="lede">
+          A contributor-owned solution by <strong>Aditya Kumar Singh</strong>, built on the
+          <a href="https://namoid.in">NamoID identity platform</a> from an open community challenge.
+        </p>
         <div class="actions">
-          <a class="button" href="https://github.com/namoidhq/namoid-challenges/blob/main/challenges/[challenge-id].md">Read the challenge</a>
-          <a href="Add your public repository URL">View source →</a>
+          <a
+            class="button"
+            href="https://github.com/namoidhq/namoid-challenges/blob/main/challenges/agent-approval-inbox.md"
+            >Read the challenge</a
+          >
+          <a href="https://github.com/adityaonrepeat/Agentgate">View source →</a>
         </div>
       </section>
       <section class="workspace">
-        <p class="eyebrow">YOUR IMPLEMENTATION</p>
-        <h2>Replace this section with your working project.</h2>
-        <p>Replace this starter with your product and integrate NamoID Hosted Auth as the application's sign-in system. Hosted Auth is not a social-login button. Your implementation and design remain yours.</p>
+        <p class="eyebrow">THE APPROVAL MODEL</p>
+        <h2>An approval binds one exact payload, and burns once.</h2>
+        <p>
+          A simulated agent proposes refunds, customer messages, order address changes, and report
+          exports. A team member signs in through NamoID Hosted Auth, inspects the request, and may
+          edit it before deciding. Approving stores a SHA-256 hash of the canonical payload, the
+          decider's server-derived NamoID subject, and a ten-minute expiry.
+        </p>
+        <p>
+          At execution the server re-hashes the current payload and compares it to the approved
+          hash, so a changed amount, address, recipient, or destination is refused. The approval is
+          then consumed atomically, so a replayed execution is refused too. Every allowed or blocked
+          attempt is written to a redacted audit trail that carries hashes and reason codes, never
+          raw payloads or tokens.
+        </p>
       </section>
     </main>
     <footer>
-      <p><strong><a href="https://namoid.in">Powered by NamoID</a></strong> · <a href="https://docs.namoid.in">Documentation</a> · <a href="https://challenges.namoid.in">Engineering Challenges</a></p>
+      <p>
+        <strong><a href="https://namoid.in">Powered by NamoID</a></strong> ·
+        <a href="https://docs.namoid.in">Documentation</a> ·
+        <a href="https://challenges.namoid.in">Engineering Challenges</a>
+      </p>
       <p>Contributor-owned · Not an official NamoID product</p>
     </footer>
   </body>

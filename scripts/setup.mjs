@@ -1,9 +1,11 @@
 import { readFile, writeFile } from "node:fs/promises";
 
-const options = Object.fromEntries(process.argv.slice(2).map((argument) => {
-  const [key, ...parts] = argument.replace(/^--/, "").split("=");
-  return [key, parts.join("=").trim()];
-}));
+const options = Object.fromEntries(
+  process.argv.slice(2).map((argument) => {
+    const [key, ...parts] = argument.replace(/^--/, "").split("=");
+    return [key, parts.join("=").trim()];
+  }),
+);
 const required = ["challenge", "name", "title", "repo"];
 const missing = required.filter((key) => !options[key]);
 if (missing.length) {
@@ -17,7 +19,12 @@ if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(options.challenge)) {
 let repositoryUrl;
 try {
   repositoryUrl = new URL(options.repo);
-  if (repositoryUrl.protocol !== "https:" || repositoryUrl.hostname !== "github.com" || repositoryUrl.pathname.split("/").filter(Boolean).length !== 2) throw new Error();
+  if (
+    repositoryUrl.protocol !== "https:" ||
+    repositoryUrl.hostname !== "github.com" ||
+    repositoryUrl.pathname.split("/").filter(Boolean).length !== 2
+  )
+    throw new Error();
 } catch {
   console.error("Repository must be an HTTPS GitHub repository root URL.");
   process.exit(1);
@@ -27,7 +34,7 @@ const replacements = new Map([
   ["[challenge-id]", options.challenge],
   ["[Contributor Name]", options.name],
   ["[Project Title]", options.title],
-  ["Add your public repository URL", options.repo.replace(/\/$/, "")]
+  ["Add your public repository URL", options.repo.replace(/\/$/, "")],
 ]);
 const files = ["README.md", "LICENSE", "index.html", "namoid-challenge.json"];
 for (const path of files) {
